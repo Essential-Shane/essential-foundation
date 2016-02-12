@@ -136,6 +136,7 @@ function essential_scripts() {
 	wp_enqueue_style( 'foundation-min', get_template_directory_uri() . '/css/foundation.min.css', array('essential-style') );
 	wp_enqueue_style( 'bxslider', get_template_directory_uri() . '/css/bxslider.css', array('essential-style') );
 	wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css', array('essential-style', 'foundation-min', 'bxslider') );
+	wp_enqueue_style( 'theme-responsive', get_template_directory_uri() . '/css/responsive.css', array('essential-style', 'foundation-min', 'bxslider', 'theme') );
 
 	//Lets bring in foundation JS
 	wp_enqueue_script( 'foundation-min', get_template_directory_uri() . '/js/foundation.min.js', array('jquery') );
