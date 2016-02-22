@@ -40,5 +40,11 @@
 
 <?php wp_footer(); ?>
 
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	  jQuery('.bxslider').bxSlider();
+	});
+</script>
+
 </body>
 </html>

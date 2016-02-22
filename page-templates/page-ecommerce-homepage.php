@@ -6,12 +6,6 @@
  */
 
 get_header(); ?>
-	
-	<script type="text/javascript">
-		jQuery(document).ready(function(){
-		  jQuery('.bxslider').bxSlider();
-		});
-	</script>
 
 	<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
 		<ul class="orbit-container bxslider">

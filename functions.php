@@ -41,6 +41,7 @@ function essential_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'icon-thumb', 99999, 100 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -107,15 +108,6 @@ function essential_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Default Page Sidebar', 'essential' ),
-		'id'            => 'sidebar-2',
-		'description'   => 'the sidebar that appears in the default page template',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
 }
 add_action( 'widgets_init', 'essential_widgets_init' );
 
@@ -123,29 +115,30 @@ add_action( 'widgets_init', 'essential_widgets_init' );
  * Enqueue scripts and styles.
  */
 function essential_scripts() {
+
 	$ver_num = 1;
-​
+
 	wp_enqueue_style( 'essential-style', get_stylesheet_uri() );
-​
+
 	//Lets bring in foundation CSS
 	wp_enqueue_style( 'foundation-min', get_template_directory_uri() . '/css/foundation.min.css', array('essential-style'), '6.1.2' );
-	wp_enqueue_style( 'bxslider', get_template_directory_uri() . '/css/bxslider.css', array('essential-style'), '4.1.2' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.5.0' );
+	wp_enqueue_style( 'bxslider', get_template_directory_uri() . '/css/bxslider.css', array('essential-style', 'foundation-min'), '4.1.2' );
 	wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css', array('essential-style', 'foundation-min', 'bxslider'), $ver_num );
-	wp_enqueue_style( 'theme-responsive', get_template_directory_uri() . '/css/responsive.css', array('essential-style', 'foundation-min', 'bxslider', 'theme'), $ver_num );
-​
+	wp_enqueue_style( 'theme-responsive', get_template_directory_uri() . '/css/responsive.css', array('essential-style', 'foundation-min', 'theme', 'bxslider'), $ver_num );
+	
 	if( !is_admin()){
 		wp_deregister_script('jquery');
 		wp_register_script('jquery', ("/wp-includes/js/jquery/jquery.js"), false, '1.11.3', true);
 		wp_enqueue_script('jquery');
 	}
-	wp_enqueue_script('jquery-easing', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array('jquery'), null, true);
-​
+	 wp_enqueue_script('jquery-easing', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array('jquery'), null, true);
+
 	//Lets bring in foundation JS
 	wp_enqueue_script( 'foundation-min', get_template_directory_uri() . '/js/foundation.min.js', array('jquery'), '6.1.2', true);
 	wp_enqueue_script( 'input', get_template_directory_uri() . '/js/input.js', array('jquery'), null, true);
-	wp_enqueue_script( 'bxslider', get_template_directory_uri() . '/js/bxslider.js', array('jquery', 'jquery-easing'), '4.1.2', true);
+	wp_enqueue_script( 'bxslider', get_template_directory_uri() . '/js/bxslider.js', array('jquery'), '4.1.2', true);
 	wp_enqueue_script( 'theme-js', get_template_directory_uri() . '/js/theme.js', array('jquery'), $ver_num, true);
-
 }
 add_action( 'wp_enqueue_scripts', 'essential_scripts' );
 
@@ -173,3 +166,4 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
