@@ -123,7 +123,7 @@ function essential_scripts() {
 	//Lets bring in foundation CSS
 	wp_enqueue_style( 'foundation-min', get_template_directory_uri() . '/css/foundation.min.css', array('essential-style'), '6.1.2' );
 	wp_enqueue_style( 'foundation-flex', get_template_directory_uri() . '/css/foundation-flex.css', array('essential-style'), '6.1.2' );
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.5.0' );
+	wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.5.0' );
 	wp_enqueue_style( 'bxslider', get_template_directory_uri() . '/css/bxslider.css', array('essential-style', 'foundation-min'), '4.1.2' );
 	wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css', array('essential-style', 'foundation-min', 'bxslider'), $ver_num );
 	wp_enqueue_style( 'theme-responsive', get_template_directory_uri() . '/css/responsive.css', array('essential-style', 'foundation-min', 'theme', 'bxslider'), $ver_num );
